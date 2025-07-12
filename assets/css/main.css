@@ -1,0 +1,556 @@
+.header{
+    height: var(--header-height);
+    background-image: linear-gradient(0, #ff6633, #f53e2d);
+}
+.header .navbar{
+    height: var(--navbar-height);
+    display: flex;
+    justify-content: space-between;
+
+}
+.header .navbar__list{
+    list-style: none;
+    padding-left: 0;
+
+}
+.navbar__iteam{
+   padding: 0 8px;
+   position: relative;
+}
+
+
+.navbar__iteam,
+.navbar__iteam-link,
+.navbar__iteam-icon{
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.3rem;
+    color: var(--white-color);
+    text-decoration: none;
+    min-height: 1.6rem;
+}
+
+/* Làm mờ tất cả các chữ trừ chữ kết nối (có class keep) */
+.navbar__iteam:not(.keep):hover{
+    color: rgba(255, 255, 255, var(--opacity));
+    cursor: pointer;
+}
+/* Làm mờ chữ và icon vì color không ăn trong chữ và iconicon */
+.navbar__iteam-link:hover{
+    opacity: var(--opacity);
+    cursor: pointer;
+}
+/* Thêm dấu | vào 2 bên */
+.navbar__iteam--separate::after{
+    content: "";
+    display: block;
+    position: absolute;
+    border-left: 2px solid #ff6633;
+    border-right: 2px solid #ff6633;
+    height: 14px;
+    top: 12%;
+    left: -1px;
+    right: -1px;
+    pointer-events: none; /* Không chặn sự kiện chuột */
+
+}
+.navbar__iteam--separate-left::after{
+    content: "";
+    display: block;
+    position: absolute;
+    border-left: 2px solid #ff6633;
+    height: 14px;
+    top: 12%;
+    left: -1px;
+    right: -1px;
+    pointer-events: none; /* Không chặn sự kiện chuột */
+}
+
+/* Làm QR code từ tải ứng dụng */
+
+
+/* Khi hover thì hiện QR , bảng thông báo, Bảng ngôn ngữ */
+.search-cart:hover .search-cart-history,
+.navbar__iteam--has-QR:hover .navbar__QRCode,
+.navbar__iteam--has-user:hover .navbar-iteam__user,
+.navbar__iteam--has-language:hover .navbar-iteam__language,
+.navbar__iteam--has-notify:hover .navbar__iteam-notify  {
+    display: block;
+   
+}
+
+.navbar__iteam-icon{
+    font-size: 1.4rem;
+    margin: 0 .5rem;
+}
+
+.navbar__QRCode{
+    position: absolute;
+    z-index: 1;
+    left:  0;
+    top: 170%;
+    width: 15rem;
+    padding: 8px;
+    background-color: var(--white-color);
+    border-radius: 3px;
+    display: none;
+    transform-origin: 10% top;
+    animation: faceIn ease .2s;
+    /* Khai báo sự thay đổi để trình duyệt tối ưu chuyển động */
+    will-change: opacity, transform;
+}
+
+/* Tạo cầu nối giữa QR với chữ tải ứng dụng */
+.navbar__QRCode::before{
+    content: "";
+    position: absolute;
+    display: block;
+    height: 22px;
+    width: 100px;
+    left: 0;
+    top: -15px;
+
+
+}
+.navbar__QRCode-img{
+    
+}
+.navbar__QRCode-apps{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.navbar__QRCode-link {
+
+}
+
+/* Đảy ảnh vào trong QR code */
+.navbar__QRCode-link:first-child,
+.navbar__QRCode-link:last-child {
+
+    margin-left: 9px;
+}
+.navbar__QRCode-link:nth-child(2) {
+
+    margin-right: 8px;
+ }
+
+ /* Ảnh các app tải như CH Plays,.. */
+.navbar__QRCode-download{
+    width: 5.2rem;
+    height: 1.3rem;
+
+}
+
+/* Bảng thông báo của thông báo */
+.navbar-iteam__user,
+.navbar-iteam__language,
+.header .navbar__iteam-notify{
+    position: absolute;
+    display: none;
+    top: 173%;
+    z-index: 1;
+    right: -1px;
+    width: 40rem;
+    background-color: var(--white-color);
+    border: 3px solid #D3D3D3;
+    box-shadow: 0 1px 3.125rem 0  rgba(0,0,0,0.2);
+    transform-origin: calc(100% - 20px) top;
+    animation: notifyGrow ease-in 0.2s;
+    /* Khai báo sự thay đổi để trình duyệt tối ưu chuyển động */
+    will-change: opacity, transform;
+}
+
+/* Làm dấu mũi tên cho bảng thông báo,... */
+
+.search-cart-history::before,  
+.navbar-iteam__user::before, 
+.navbar-iteam__language::before,
+.navbar__iteam-notify::before {
+    content: "";
+    /* Chuyển sang hình chữ nhật đê cạnh tù */
+    border-width: 24px 32px; 
+    border-style: solid;
+    border-color: transparent transparent var(--white-color) transparent;
+    position: absolute;
+    top: -36px;
+    right: 0;
+    cursor: pointer;
+}
+
+/*  Làm cầu nối từ chữ thông báo đến bảng thông báo*/
+.navbar-iteam__user::after,
+.navbar-iteam__language::after,
+.navbar__iteam-notify::after {
+    content: "";
+    position: absolute;
+    right: -2px;
+    top: -19px;
+    width: 120px;
+    height: 24px;
+}
+
+/* Animation cho thông báo */
+@keyframes notifyGrow {
+    from{
+        transform: scale(0);
+        opacity: 0;
+    }
+    to{
+        transform: scale(1);
+        opacity: 1;
+    }
+    
+}
+
+/* bảng thông báo, con của navbar */
+
+.notify-header{
+    height: 4rem;
+    background-color: var(--white-color);
+    cursor: default;
+    
+}
+.notify-header h3{
+    color: #999;
+    margin: 0 0 0 12px;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 4rem;
+    user-select: none;
+}
+.notify-list{
+    padding-left: 0;
+
+}
+.notify-iteam{
+    
+
+}
+.user-iteam:hover,
+.notify-iteam:hover{
+    background-color: #f7f7f7;
+    
+
+}
+
+.notify-iteam__link{
+    display: flex;
+    padding: 12px;
+    text-decoration: none;
+}
+/* Nếu chưa đọc thì có màu, còn đọc rồi thì màu = background-colorcolor */
+.notify-iteam__link--NotRead{
+    background-color: rgba(238, 75, 43, 0.08);
+}
+
+/*  */
+.notify-img{
+    width: 4.8rem;
+    object-fit: contain;
+
+}
+.notify-content{
+    margin-left: 12px;
+
+}
+.notify-content__name{
+    display: block;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    font-weight: 400;
+
+}
+
+.notify-content__descriontion{
+    display: block;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    color: #756F6E;
+    margin-top: 4px;
+
+}
+.notify-footer{
+    
+   display: flex;
+}
+.notify-footer-btt{
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 8px 0px;
+    font-size: 1.4rem;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+/* Bảng ngôn ngữ */
+.navbar-iteam__user,
+.navbar-iteam__language{
+    width: 18rem;
+    padding: 1em;
+    background-color: var(--white-color)
+}
+.navbar-iteam__user {
+    width: 20rem;
+    
+}
+.user-list,
+.language-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+}
+.user-iteam,
+.language-iteam{
+    display: block;
+    padding: 6px 10px;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    margin-top: 12px;
+}
+.user-iteam:hover,
+.language-iteam:hover{
+    color: var(--primary-color);
+    opacity: var(--opacity);
+
+}
+.user-iteam__link,
+.language-iteam__link{
+    text-decoration: none;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+}
+/* Search */
+.header .search{
+    height: var(--search-height);
+    display: flex;
+    justify-content: space-around;
+    align-items: self-start;
+}
+
+.search__shoppe-logo {
+    width: 23.4rem;
+    object-fit: contain;
+    padding-right: 4rem;
+
+    
+}
+.search-content{
+    flex: 1;
+}
+.search-line{
+    position: relative;
+    height: 40px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    background-color: var(--white-color);
+}
+.search-line__input{
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    padding: 0 8px;
+    border-radius: 3px;
+}
+.search-icon{
+    color: var(--white-color);
+    background-color: #FB5533;
+    font-size: 1.4rem;
+    padding: 10px 23px;
+    margin: 0 8px;
+    border-radius: 3px;
+}
+
+/* click vào ô tìm search để mửo bảng tìm kiếm */
+.search-line__input:focus ~ .search-history{
+    display: block;
+}
+/* Bảng lịch sử tìm kiếm */
+.search-history{
+    display: none;
+    position: absolute;
+    z-index: 1;
+    top: 120%;
+    left: 0;
+    background-color: var(--white-color);
+    width: calc(100% - 90px);
+    font-size: 1.6rem;
+    border: 3px solid #D3D3D3;
+    border-radius: 3px;
+    box-shadow: 0 1px 3.125rem 0  rgba(0,0,0,0.2);
+    overflow: hidden;
+ 
+
+}
+
+
+.search-cart__iteam-header,
+.search-history__header,
+.search-cart__iteam-footer__decrition{
+    font-size: 1.6rem;
+    color: #999;
+    margin: 15px 0;
+    /* padding: 0 8px; */
+    font-weight: 300;
+
+}
+.search-history__list{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    
+}
+.search-history__iteam{
+   
+}
+
+.search-history__iteam:hover{
+    background-color: #fafafa;
+}
+
+.search-history_iteam__link{
+    display: block;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.8rem;
+    padding: 11px 8px;
+}
+
+/* Danh sách gợi ý */
+.search-suggestion__list{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    margin-top: 15px;
+    padding: 0;
+
+}
+.search-suggestion__iteam{
+
+}
+.search-suggestion_iteam__link{
+    font-size: 1.4rem;
+    outline: none;
+    text-decoration: none;
+    color: var(--white-color);
+
+
+}
+
+.search-cart{
+    position: relative;
+    margin: 1.6rem 3rem;
+    padding: 0 1rem;
+    cursor: pointer;
+}
+.search-cart__icon{
+    color: var(--white-color);
+    font-size: 2.6rem;
+    
+}
+/* Hiện số sản phẩm trong giỏ hàng */
+.search-cart--notice{
+    position: absolute;
+    top: -12px;
+    right: 0px;
+    padding: 4px 8px;
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    background-color: var(--white-color);
+    border-radius: 15px;
+    border: 2px solid #EE4D2D;
+}
+
+/* Bangr giỏ hàng */
+.search-cart-history{
+    position: absolute;
+    display: none;
+    top: 170%;
+    right: -10px;
+    width: 400px;
+    border: 3px solid #D3D3D3;
+    border-radius: 3px;
+    background-color: var(--white-color);
+    box-shadow: 0 1px 3.125rem 0  rgba(0,0,0,0.2);
+    animation: faceIn ease .2s;
+    cursor: default;
+}
+.search-cart__list{
+    margin: 0;
+    padding: 10px;
+
+}
+.search-cart__item--no-product{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    /* thêm display none dể xóa  không có sản phẩm */
+    display: none;
+
+}
+.search-cart__no-product{
+    width: 150px;
+    object-fit: contain;
+    
+}
+.search-cart__no-product__descriontion{
+    font-size: 1.6rem;
+}
+
+.search-cart__iteam-header{
+    margin: 20px 0;
+}
+
+.search-cart__iteam{
+    display: flex;
+    margin-bottom: 20px;
+
+}
+.search-cart__iteam-img{
+    width: 60px;
+    object-fit: contain;
+    border: 1px solid #D3D3D3;
+}
+.search-cart__iteam-info{
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    font-size: 1.8rem;
+
+}
+.search-cart__iteam-info__header{
+    white-space: nowrap;       /* Không cho xuống dòng */
+    overflow: hidden;          /* Ẩn phần văn bản bị tràn */
+    text-overflow: ellipsis;   /* Hiển thị dấu "..." khi quá dài */
+    width: 200px;
+    margin: 0;
+    margin-left: 10px;
+    font-size: 1.4rem;
+    font-weight: 500;
+   
+}
+.search-cart__iteam-info__price{
+    width: 100px;
+    color: var(--primary-color);
+    text-align: right;
+
+}
+.search-cart__iteam-footer{
+    display: flex;
+    justify-content: space-between;
+
+}
+.search-cart__iteam-footer__decrition{
+  
+
+}

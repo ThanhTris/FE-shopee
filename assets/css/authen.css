@@ -1,0 +1,197 @@
+.header{
+    height: 8.4rem;
+    display: flex;
+    align-items: center;
+}
+h2{
+    margin: 0;
+    line-height: normal; /* Tránh bị kéo dãn */
+}
+
+.navbar{
+    height: 3.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.navbar__list{
+    display: inline-flex;
+    align-items: center;
+    list-style: none;
+    padding-left: 0;
+
+}
+.navbar__iteam{
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    position: relative;
+    font-size: 1.4rem;
+    
+}
+
+.navbar__iteam-logo{
+    width: 15rem;
+    object-fit: contain;
+}
+.navbar__iteam-link{
+    text-decoration: none;
+}
+
+
+.navbar__iteam-title{
+    font-size: 3rem;
+    font-weight: 300;
+}
+
+
+.navbar__iteam-help{
+    color: var(--primary-color);
+}
+
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 80rem;
+    background-image: linear-gradient(0, #ff6633, #f53e2d);
+}
+.container-warpper{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 70%;
+}
+
+.container__about{
+
+}
+.container__about-logo{
+
+}
+.container__about-info{
+
+    color: var(--white-color);
+}
+.container__form{
+    width: 40rem;
+    background-color: var(--white-color);
+
+}
+.form__title{
+    font-size: 3.2rem;
+    padding: 26px 30px;
+    margin: 0;
+    font-weight: 300;
+}
+.form__input{
+    padding: 0 30px;
+
+}
+.input-userID{
+    display: block;
+    width: 100%;
+    padding: 16px;
+    border-radius: 5px;
+    border: .5px solid var(--text-color);
+    /* background-color: #FFF6F7; */
+    outline: var(--primary-color);
+    font-size: 1.8rem;
+}
+.forgot-pass,
+.another-way,
+.input-warning{
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin: 10px 0 18px;
+}
+
+/* Làm được kẻ chia 2 phần */
+.input-separated{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 12px;
+} 
+
+/* Làm 2 đường kẻ  */
+.input-separated::before,
+.input-separated::after{
+    content: "";
+    flex: 1;
+    border: .5px solid #CCCCCC;
+
+}
+
+.input-separated-text{
+    font-size: 1.4rem;
+    padding: 0 16px;
+    color: #CCCCCC;
+
+}
+.form-socials{
+    display: flex;
+    justify-content: space-between;
+
+}
+.form-socials-logo{
+    width: 2rem;
+    object-fit: contain;
+    margin: 0 5px;
+}
+.btn--With-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width: 16rem;
+    height: 5rem;
+    background-color: var(--white-color);
+    font-size: 1.4rem;
+    border: 1px solid #CCCCCC;
+    border-radius: 2px;
+ 
+
+}
+.form__policy-text{
+    font-size: 1.4rem;
+    line-height: 1.4;
+    text-align: center;
+    margin: 16px 0;
+
+}
+
+.login-link,
+.register-link,
+.form__policy-link{
+    text-decoration: none;
+    color: var(--primary-color);
+
+}
+.form__register-link,
+.form__login-link{
+    text-align: center;
+    padding: 26px 30px;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    font-weight: 200;
+    
+}
+
+.sub-input{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    font-size: 1.4rem;
+    color: #0055AA;
+}
+.forgot-pass{
+    
+}
+.another-way{
+    
+}
